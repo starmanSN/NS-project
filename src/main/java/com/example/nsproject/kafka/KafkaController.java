@@ -1,4 +1,4 @@
-package com.example.myservice.kafka;
+package com.example.nsproject.kafka;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

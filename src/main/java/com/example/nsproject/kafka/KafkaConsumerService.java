@@ -1,4 +1,4 @@
-package com.example.myservice.kafka;
+package com.example.nsproject.kafka;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
