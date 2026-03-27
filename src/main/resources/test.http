@@ -1,2 +1,3 @@
+
 POST http://185.154.52.218:9371/kafka/send?message=Привет, Kafka!
 
