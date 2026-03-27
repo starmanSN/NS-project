@@ -1,0 +1,2 @@
+docker build -t starmansn/ns-project:latest .
+docker push starmansn/ns-project:latest
