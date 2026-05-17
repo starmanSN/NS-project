@@ -1,4 +1,4 @@
-package com.example.nsproject.kafka;
+package com.example.nsproject.config;
 
 import jakarta.annotation.PostConstruct;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -13,19 +13,24 @@ import java.util.Properties;
 @Component
 public class KafkaConfig {
 
-//    @Value("${bootstrap.servers}")
-//    private String bootstrapServers;
+    @Value("${spring.kafka.bootstrap-servers}")
+    private String bootstrapServers;
 
-    private String bootstrapServers = "185.154.52.222:9092";
-    private final String topic = "test_topic";
+    @Value("${spring.kafka.topic}")
+    private String topic;
+
+    @Value("${spring.kafka.consumer.group-id}")
+    private String groupId;
 
     public String getBootstrapServers() {
         return bootstrapServers;
     }
+
     @PostConstruct
     public void printBootstrapServers() {
         System.out.println("bootstrapServers = " + bootstrapServers);
     }
+
     public Properties getProducerProps() {
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
@@ -37,7 +42,7 @@ public class KafkaConfig {
     public Properties getConsumerProps() {
         Properties props = new Properties();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "my_group");
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");

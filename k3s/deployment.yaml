@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: NS-project
+  name: ns-project
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: NS-project
+      app: ns-project
   template:
     metadata:
       labels:
-        app: NS-project
+        app: ns-project
     spec:
       containers:
-        - name: NS-project
+        - name: ns-project
           image: starmansn/ns-project:latest
           ports:
             - containerPort: 9371

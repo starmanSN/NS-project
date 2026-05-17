@@ -1,12 +1,11 @@
-FROM node:14
+FROM eclipse-temurin:17-jdk
 
-WORKDIR /app
+# Аргумент для пути к jar — по умолчанию target/*.jar
+ARG JAR_FILE=build/libs/*.jar
 
-COPY package*.json ./
-RUN npm install
+# Копирование jar файла
+COPY ${JAR_FILE} app.jar
 
-COPY . .
+EXPOSE 8080
 
-EXPOSE 9371
-
-CMD ["npm", "start"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]

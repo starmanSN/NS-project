@@ -1,5 +1,6 @@
-package com.example.nsproject.kafka;
+package com.example.nsproject.service;
 
+import com.example.nsproject.config.KafkaConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;

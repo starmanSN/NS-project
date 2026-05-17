@@ -1,5 +1,7 @@
-package com.example.nsproject.kafka;
+package com.example.nsproject.controller;
 
+import com.example.nsproject.config.KafkaConfig;
+import com.example.nsproject.service.KafkaProducerService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
