@@ -5,20 +5,8 @@
       <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
-        <collectionProp name="Arguments.arguments">
-          <elementProp name="URL" elementType="Argument">
-            <stringProp name="Argument.name">URL</stringProp>
-            <stringProp name="Argument.value">slovardalja.net</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="WORD" elementType="Argument">
-            <stringProp name="Argument.name">WORD</stringProp>
-            <stringProp name="Argument.value">СТОЛ</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-        </collectionProp>
+        <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
     </TestPlan>
     <hashTree>
       <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Random UUID">
@@ -45,197 +33,6 @@
         <stringProp name="serializerValue">org.apache.kafka.common.serialization.StringSerializer</stringProp>
       </com.di.jmeter.kafka.config.KafkaProducerConfig>
       <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments">
-          <elementProp name="counter" elementType="Argument">
-            <stringProp name="Argument.name">counter</stringProp>
-            <stringProp name="Argument.value">0</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-        </collectionProp>
-      </Arguments>
-      <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Debug Thread Group" enabled="false">
-        <intProp name="ThreadGroup.num_threads">1</intProp>
-        <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">5</stringProp>
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-        </elementProp>
-      </ThreadGroup>
-      <hashTree>
-        <com.github.johrstrom.listener.PrometheusListener guiclass="com.github.johrstrom.listener.gui.PrometheusListenerGui" testclass="com.github.johrstrom.listener.PrometheusListener" testname="Prometheus Listener" enabled="false">
-          <collectionProp name="prometheus.collector_definitions">
-            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
-              <stringProp name="collector.help">response time summary</stringProp>
-              <stringProp name="collector.metric_name">jmeter_rt_summary</stringProp>
-              <stringProp name="collector.type">SUMMARY</stringProp>
-              <collectionProp name="collector.labels">
-                <stringProp name="50511102">category</stringProp>
-                <stringProp name="102727412">label</stringProp>
-                <stringProp name="3059181">code</stringProp>
-              </collectionProp>
-              <stringProp name="collector.quantiles_or_buckets">0.75,0.5|0.95,0.1|0.99,0.01</stringProp>
-              <stringProp name="listener.collector.listen_to">samples</stringProp>
-              <stringProp name="listener.collector.measuring">ResponseTime</stringProp>
-            </elementProp>
-            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
-              <stringProp name="collector.help">all code and count</stringProp>
-              <stringProp name="collector.metric_name">jmeter_count_total</stringProp>
-              <stringProp name="collector.type">COUNTER</stringProp>
-              <collectionProp name="collector.labels">
-                <stringProp name="102727412">label</stringProp>
-                <stringProp name="3059181">code</stringProp>
-              </collectionProp>
-              <stringProp name="collector.quantiles_or_buckets"></stringProp>
-              <stringProp name="listener.collector.measuring">CountTotal</stringProp>
-            </elementProp>
-            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
-              <stringProp name="collector.help">success total</stringProp>
-              <stringProp name="collector.metric_name">jmeter_success_total</stringProp>
-              <stringProp name="collector.type">COUNTER</stringProp>
-              <collectionProp name="collector.labels">
-                <stringProp name="102727412">label</stringProp>
-                <stringProp name="3059181">code</stringProp>
-              </collectionProp>
-              <stringProp name="collector.quantiles_or_buckets"></stringProp>
-              <stringProp name="listener.collector.measuring">SuccessTotal</stringProp>
-              <stringProp name="listener.collector.listen_to">samples</stringProp>
-            </elementProp>
-            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
-              <stringProp name="collector.help">success ratio</stringProp>
-              <stringProp name="collector.metric_name">jmeter_success_ratio</stringProp>
-              <stringProp name="collector.type">SUCCESS_RATIO</stringProp>
-              <collectionProp name="collector.labels">
-                <stringProp name="102727412">label</stringProp>
-                <stringProp name="3059181">code</stringProp>
-              </collectionProp>
-              <stringProp name="collector.quantiles_or_buckets"></stringProp>
-              <stringProp name="listener.collector.measuring">SuccessRatio</stringProp>
-              <stringProp name="listener.collector.listen_to">samples</stringProp>
-            </elementProp>
-            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
-              <stringProp name="collector.help">idle time</stringProp>
-              <stringProp name="collector.metric_name">jmeter_idle_time</stringProp>
-              <stringProp name="collector.type">SUMMARY</stringProp>
-              <collectionProp name="collector.labels"/>
-              <stringProp name="collector.quantiles_or_buckets">0.75,0.5|0.95,0.1|0.99,0.01</stringProp>
-              <stringProp name="listener.collector.measuring">IdleTime</stringProp>
-            </elementProp>
-            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
-              <stringProp name="collector.help">failure total</stringProp>
-              <stringProp name="collector.metric_name">jmeter_failure_total</stringProp>
-              <stringProp name="collector.type">COUNTER</stringProp>
-              <collectionProp name="collector.labels">
-                <stringProp name="102727412">label</stringProp>
-              </collectionProp>
-              <stringProp name="collector.quantiles_or_buckets"></stringProp>
-              <stringProp name="listener.collector.measuring">FailureTotal</stringProp>
-            </elementProp>
-            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
-              <stringProp name="collector.help">response time counter</stringProp>
-              <stringProp name="collector.metric_name">jmeter_rt_counter</stringProp>
-              <stringProp name="collector.type">SUMMARY</stringProp>
-              <collectionProp name="collector.labels"/>
-              <stringProp name="collector.quantiles_or_buckets">0.75,0.5|0.95,0.1|0.99,0.01</stringProp>
-              <stringProp name="listener.collector.measuring">ResponseTime</stringProp>
-            </elementProp>
-            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
-              <stringProp name="collector.help">latency summary</stringProp>
-              <stringProp name="collector.metric_name">jmeter_latency_summary</stringProp>
-              <stringProp name="collector.type">SUMMARY</stringProp>
-              <collectionProp name="collector.labels"/>
-              <stringProp name="collector.quantiles_or_buckets">0.75,0.5|0.95,0.1|0.99,0.01</stringProp>
-              <stringProp name="listener.collector.measuring">Latency</stringProp>
-            </elementProp>
-            <elementProp name="" elementType="com.github.johrstrom.listener.ListenerCollectorConfig">
-              <stringProp name="collector.help">connect time</stringProp>
-              <stringProp name="collector.metric_name">jmeter_connect_time</stringProp>
-              <stringProp name="collector.type">SUMMARY</stringProp>
-              <collectionProp name="collector.labels"/>
-              <stringProp name="collector.quantiles_or_buckets">0.75,0.5|0.95,0.1|0.99,0.01</stringProp>
-              <stringProp name="listener.collector.measuring">ConnectTime</stringProp>
-            </elementProp>
-          </collectionProp>
-        </com.github.johrstrom.listener.PrometheusListener>
-        <hashTree/>
-        <com.di.jmeter.kafka.sampler.KafkaProducerSampler guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.sampler.KafkaProducerSampler" testname="Kafka Producer Sampler" enabled="false">
-          <stringProp name="kafkaMessage">{ &quot;msg_uuid&quot;: &quot;${UUID}&quot;, &quot;head&quot;: true, &quot;method&quot;: &quot;POST&quot;, &quot;uri&quot;: &quot;/post-message&quot; } </stringProp>
-          <stringProp name="kafkaMessageKey"></stringProp>
-          <stringProp name="kafkaProducerClientVariableName">KafkaProducerClient</stringProp>
-          <stringProp name="kafkaTopic">test_topic</stringProp>
-          <collectionProp name="messageHeaders"/>
-          <stringProp name="partitionString"></stringProp>
-        </com.di.jmeter.kafka.sampler.KafkaProducerSampler>
-        <hashTree/>
-        <com.di.jmeter.kafka.sampler.KafkaConsumerSampler guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.sampler.KafkaConsumerSampler" testname="Kafka Consumer Sampler" enabled="false">
-          <stringProp name="commitType">Sync</stringProp>
-          <stringProp name="kafkaConsumerClientVariableName">KafkaConsumerClient</stringProp>
-          <stringProp name="pollTimeout">100</stringProp>
-        </com.di.jmeter.kafka.sampler.KafkaConsumerSampler>
-        <hashTree/>
-        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
-          <stringProp name="scriptLanguage">groovy</stringProp>
-          <stringProp name="parameters"></stringProp>
-          <stringProp name="filename"></stringProp>
-          <stringProp name="cacheKey">true</stringProp>
-          <stringProp name="script">def iteration = (vars.getIteration() as int)
-
-def headValue = (iteration % 10 == 0) ? false : true
-
-vars.put(&quot;HEAD_VALUE&quot;, headValue as String)
-</stringProp>
-        </JSR223PreProcessor>
-        <hashTree/>
-        <com.di.jmeter.kafka.sampler.KafkaProducerSampler guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.sampler.KafkaProducerSampler" testname="Kafka Producer Sampler" enabled="true">
-          <stringProp name="kafkaMessage">{ &quot;msg_uuid&quot;: &quot;${UUID}&quot;, &quot;head&quot;: ${HEAD_VALUE}, &quot;method&quot;: &quot;POST&quot;, &quot;uri&quot;: &quot;/post-message&quot; } </stringProp>
-          <stringProp name="kafkaMessageKey"></stringProp>
-          <stringProp name="kafkaProducerClientVariableName">KafkaProducerClient</stringProp>
-          <stringProp name="kafkaTopic">test_topic</stringProp>
-          <collectionProp name="messageHeaders"/>
-          <stringProp name="partitionString"></stringProp>
-        </com.di.jmeter.kafka.sampler.KafkaProducerSampler>
-        <hashTree/>
-        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>false</encoding>
-              <assertions>true</assertions>
-              <subresults>true</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>false</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>false</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <sentBytes>true</sentBytes>
-              <url>true</url>
-              <threadCounts>true</threadCounts>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename"></stringProp>
-        </ResultCollector>
-        <hashTree/>
-      </hashTree>
       <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group">
         <collectionProp name="ultimatethreadgroupdata">
           <collectionProp name="79825980">
@@ -274,16 +71,7 @@ vars.put(&quot;HEAD_VALUE&quot;, headValue as String)
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
       </kg.apc.jmeter.threads.UltimateThreadGroup>
       <hashTree>
-        <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
-          <stringProp name="CounterConfig.start">1</stringProp>
-          <stringProp name="CounterConfig.end"></stringProp>
-          <stringProp name="CounterConfig.incr">1</stringProp>
-          <stringProp name="CounterConfig.name">counter</stringProp>
-          <stringProp name="CounterConfig.format"></stringProp>
-          <boolProp name="CounterConfig.per_user">true</boolProp>
-        </CounterConfig>
-        <hashTree/>
-        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+        <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor">
           <stringProp name="scriptLanguage">groovy</stringProp>
           <stringProp name="parameters"></stringProp>
           <stringProp name="filename"></stringProp>
@@ -294,7 +82,7 @@ vars.put(&quot;HEAD_VALUE&quot;, headValue as String)
 </stringProp>
         </JSR223PreProcessor>
         <hashTree/>
-        <com.di.jmeter.kafka.sampler.KafkaProducerSampler guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.sampler.KafkaProducerSampler" testname="Kafka Producer Sampler" enabled="true">
+        <com.di.jmeter.kafka.sampler.KafkaProducerSampler guiclass="TestBeanGUI" testclass="com.di.jmeter.kafka.sampler.KafkaProducerSampler" testname="SendKafkaRequest">
           <stringProp name="kafkaMessage">{ &quot;msg_uuid&quot;: &quot;${UUID}&quot;, &quot;head&quot;: ${HEAD_VALUE}, &quot;method&quot;: &quot;POST&quot;, &quot;uri&quot;: &quot;/post-message&quot; } </stringProp>
           <stringProp name="kafkaMessageKey"></stringProp>
           <stringProp name="kafkaProducerClientVariableName">KafkaProducerClient</stringProp>
@@ -302,6 +90,84 @@ vars.put(&quot;HEAD_VALUE&quot;, headValue as String)
           <collectionProp name="messageHeaders"/>
           <stringProp name="partitionString"></stringProp>
         </com.di.jmeter.kafka.sampler.KafkaProducerSampler>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer">
+          <stringProp name="ConstantTimer.delay">1000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
         <hashTree/>
       </hashTree>
       <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener">

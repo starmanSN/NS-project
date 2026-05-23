@@ -2,10 +2,8 @@ package com.example.nsproject.service;
 
 import com.example.nsproject.data.MessageEntry;
 import com.example.nsproject.repository.MessageEntryRepository;
-import com.example.nsproject.service.DelayManager;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +15,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class KafkaMessageService {
@@ -28,10 +24,7 @@ public class KafkaMessageService {
     private final ObjectMapper mapper = new ObjectMapper();
     private final DelayManager delayManager;
 
-    private static final Logger log = LoggerFactory.getLogger(KafkaMessageService.class);
-
-    @Async
-    @KafkaListener(topics = "test_topic", concurrency = "4")
+    @KafkaListener(topics = "test_topic", concurrency = "3")
     public void listen(String message) {
         try {
             log.info("{} - [Read from Kafka] {}", now(), message);
